@@ -9,13 +9,21 @@ Default action: **invent something that hasn't existed before.** Not "what's nex
 
 ## Invent
 
-1. **Archaeology** (`$inventor-archaeology`) — build a capability matrix of what this codebase already does: exists, partially exists, or is absent, mapped to mechanisms rather than feature names. This kills the "already shipped under a different name" trap before it wastes anyone's time.
-2. **Whitespace from failure** (`$inventor-whitespace`) — challenge the guarantees the surviving area makes with the failure lenses below, and turn what breaks into concrete candidate mechanisms.
+1. **Archaeology** — apply the bundled `inventor-archaeology` workflow to build a capability matrix of what this codebase already does: exists, partially exists, or is absent, mapped to mechanisms rather than feature names. This kills the "already shipped under a different name" trap before it wastes anyone's time.
+2. **Whitespace from failure** — apply the bundled `inventor-whitespace` workflow to challenge the guarantees the surviving area makes with the failure lenses below, and turn what breaks into concrete candidate mechanisms.
 3. **Patent-informed novelty search** — for every promising candidate, search patents and technical literature around the underlying problem and mechanism, not just the feature name. This does two jobs:
    - **Inspiration.** Patents are full of specific, well-worked mechanisms for adjacent problems. Borrow and recombine — a technique from an unrelated domain applied here is often exactly what "hasn't existed before" looks like in practice.
    - **A real novelty test.** Search element-by-element, not the whole idea as one phrase — most matches hide in a specific mechanism (a data structure, a verification step, a retry strategy), not the headline. If nothing close turns up, that's a strong candidate. If something close exists, either push the idea further until it's a real departure, or note plainly what it resembles and build it anyway because it's good — just don't call it new.
 4. **Push past incremental.** The first version of an idea is usually a small, safe tweak. Before finalizing a candidate, ask what it would look like if you combined it with another candidate, generalized it beyond the one case that inspired it, or took the mechanism to its logical extreme. An "invention" that only clears the bar of "mildly useful and nobody happened to build it" is a weak one — keep pushing until it would surprise someone who knows this space well.
 5. **Sanity-check**: every finalist must name a technical state machine, data representation, or algorithm — not just a desirable outcome. "Use AI to," "apply policy," "generate a score," "use a blockchain," "sign a receipt," and "store evidence" name outcomes, not mechanisms; push past the phrase or drop the idea.
+
+## Search Boundary
+
+Before sending mechanism details to an external search service, choose and report one state:
+
+- **Search-ready** — the query can be expressed with public-safe abstractions and search tools are available. Search element by element, cite the sources, and state the search date.
+- **Degraded-unsearched** — search is unavailable, fails, or returns evidence too incomplete to support a novelty read. Label the candidate `unsearched`, provide the exact follow-up queries, and never treat tool failure or zero returned results as evidence that no prior art exists.
+- **Blocked-private** — an adequate query would disclose private or confidential implementation details. Do not send it. Ask for a sanitized abstraction or explicit authorization before crossing that boundary.
 
 The deliverable: a short list of genuinely new feature or product ideas, each with its mechanism, why the codebase doesn't already cover it, and a one-line novelty read from step 3 (looks fresh and here's what it's adjacent to / resembles known art and here's what, so build it for the value not the novelty).
 
