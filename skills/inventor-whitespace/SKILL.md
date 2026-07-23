@@ -1,6 +1,6 @@
 ---
 name: inventor-whitespace
-description: Use when generating candidate feature or invention ideas from a codebase's failure modes and unstated guarantees — turning "what could go wrong" into claim-shaped technical candidates, after product archaeology and before normalizing into invention cards.
+description: Use when generating candidate feature or invention ideas from a codebase's failure modes and unstated guarantees — turning "what could go wrong" into mechanism-shaped technical candidates, after product archaeology and before patent-informed novelty search.
 ---
 
 # Inventor: Whitespace From Failure
@@ -34,7 +34,7 @@ A candidate is not ready merely because it names a desirable outcome. It must sp
 - A **data representation** (what's stored, in what shape, with what invariants), or
 - An **algorithm** (concrete steps, not "detect anomalies better").
 
-If the best you can say is "use AI to catch this," "apply a policy," "generate a score," "use a blockchain," "sign a receipt," or "store evidence," it is not a candidate yet — those name outcomes, not mechanisms. Push further: *what* state machine, *what* data structure, *what* algorithm would actually produce that outcome? If nothing more specific emerges, drop it rather than forcing it into a card.
+If the best you can say is "use AI to catch this," "apply a policy," "generate a score," "use a blockchain," "sign a receipt," or "store evidence," it is not a candidate yet — those name outcomes, not mechanisms. Push further: *what* state machine, *what* data structure, *what* algorithm would actually produce that outcome? If nothing more specific emerges, drop it.
 
 ## Output
 
@@ -44,4 +44,4 @@ For each surviving candidate, capture in a sentence or two:
 - The specific mechanism (state machine / data structure / algorithm) being proposed.
 - Which capability-matrix row it extends, replaces, or newly covers.
 
-Hand each surviving candidate to `$inventor-card` to normalize into the full invention-card template before any search or diligence work starts.
+Hand each surviving candidate to the patent-informed novelty search step of `$inventor` — that's where inspiration from adjacent problem spaces and a real novelty check happen, before anything is finalized as "invented."

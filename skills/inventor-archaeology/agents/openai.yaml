@@ -1,7 +1,0 @@
-interface:
-  display_name: "Inventor: Product Archaeology"
-  short_description: "Build a codebase capability matrix before ideating"
-  default_prompt: "Use $inventor-archaeology to build a capability matrix of this codebase — what exists, partially exists, is absent, or is already publicly disclosed."
-
-policy:
-  allow_implicit_invocation: true

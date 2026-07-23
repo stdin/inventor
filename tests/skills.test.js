@@ -4,15 +4,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 
-const SKILLS = [
-  'inventor',
-  'inventor-archaeology',
-  'inventor-whitespace',
-  'inventor-card',
-  'inventor-search',
-  'inventor-gate',
-  'inventor-disposition'
-];
+const SKILLS = ['inventor', 'inventor-archaeology', 'inventor-whitespace'];
 
 for (const name of SKILLS) {
   const skillPath = path.join(root, 'skills', name, 'SKILL.md');
@@ -22,12 +14,12 @@ for (const name of SKILLS) {
   assert.ok(frontmatter, `${name}/SKILL.md is missing YAML frontmatter`);
   assert.match(frontmatter[1], new RegExp(`name:\\s*${name}\\b`), `${name}/SKILL.md frontmatter name mismatch`);
   assert.match(frontmatter[1], /description:\s*Use when/, `${name}/SKILL.md description should start with "Use when"`);
+}
 
-  const agentPath = path.join(root, 'skills', name, 'agents', 'openai.yaml');
-  assert.ok(fs.existsSync(agentPath), `missing ${agentPath}`);
-  const agentText = fs.readFileSync(agentPath, 'utf8');
-  assert.match(agentText, /display_name:/);
-  assert.match(agentText, new RegExp(`\\$${name}\\b`), `${name}/agents/openai.yaml default_prompt should reference $${name}`);
+// The main skill must not still be pointing at the deleted formal-diligence skills.
+const mainSkill = fs.readFileSync(path.join(root, 'skills', 'inventor', 'SKILL.md'), 'utf8');
+for (const removed of ['inventor-card', 'inventor-search', 'inventor-gate', 'inventor-disposition']) {
+  assert.ok(!mainSkill.includes(`$${removed}`), `skills/inventor/SKILL.md still references removed skill $${removed}`);
 }
 
 console.log(`skills tests passed (${SKILLS.length} skills)`);

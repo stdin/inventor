@@ -1,7 +1,0 @@
-interface:
-  display_name: "Inventor"
-  short_description: "Patent-informed feature whitespace and collision diligence"
-  default_prompt: "Use $inventor to find patent-informed feature whitespace for this codebase and run collision diligence before we build or file on an idea."
-
-policy:
-  allow_implicit_invocation: true

@@ -1,7 +1,0 @@
-interface:
-  display_name: "Inventor: Disposition and Filing Timing"
-  short_description: "Decide disposition, run the human-inventorship workshop, track refresh dates"
-  default_prompt: "Use $inventor-disposition to decide what happens next to this invention card and set up its filing-timeline and refresh-search reminders."
-
-policy:
-  allow_implicit_invocation: true

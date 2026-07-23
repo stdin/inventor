@@ -1,7 +1,0 @@
-interface:
-  display_name: "Inventor: Widening-Ring Search"
-  short_description: "Search patent and non-patent prior art in widening rings"
-  default_prompt: "Use $inventor-search to search prior art for this invention card in widening rings — phrases, synonyms, element pairs, CPC/IPC classes, citations, and families."
-
-policy:
-  allow_implicit_invocation: true

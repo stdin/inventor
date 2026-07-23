@@ -1,40 +1,29 @@
 ---
 name: inventor
-description: Use when brainstorming or proposing new features for a codebase, grounding ideation in what's missing or failure-prone rather than wishful outcomes. Also runs an opt-in patent-diligence safeguard — prior-art search, claim charts, and legal gates — when a specific idea is worth checking before you build on it or consider filing.
+description: Use when inventing new features or products for a codebase — not incremental backlog items, but things that genuinely haven't existed before. Uses patent and prior-art search as a diligence input to both spark ideas and test real novelty against the wider landscape, not just this one codebase.
 ---
 
 # Inventor
 
-Default action: **invent a new feature for this codebase.** Look at what's here, find where it's thin or breaks, and propose concrete feature ideas — each grounded in a real mechanism, not a wish. Patent diligence (prior-art search, claim charts, legal gates, disposition) is a **secondary, opt-in safeguard**, not a gate ordinary ideation has to pass through. Reach for it only when a specific candidate is worth checking before you build on it or before anyone considers filing.
+Default action: **invent something that hasn't existed before.** Not "what's next on the backlog" — what would be genuinely new, tested against your own codebase *and* the wider landscape of what's already been built, patented, or published elsewhere. Patent search is a core ideation input here, not a legal formality: it's where a lot of the best raw material for "nobody's done this yet" actually lives.
 
-## Default: Invent
+## Invent
 
-1. **Quick archaeology** (`$inventor-archaeology`) — scoped to the relevant area; it doesn't need to cover the whole codebase for a fast ideation pass. Build a capability matrix of what already exists, partially exists, or is absent, mapped to mechanisms rather than feature names. This alone usually kills half of a naive idea list as "already shipped under a different name."
-2. **Whitespace from failure** (`$inventor-whitespace`) — challenge the guarantees the surviving area makes with the failure lenses below, and turn what breaks into concrete candidates.
-3. **Sanity-check each candidate**: it must name a technical state machine, data representation, or algorithm — not just a desirable outcome. "Use AI to," "apply policy," "generate a score," "use a blockchain," "sign a receipt," and "store evidence" name outcomes, not mechanisms; push past the phrase or drop the idea.
+1. **Archaeology** (`$inventor-archaeology`) — build a capability matrix of what this codebase already does: exists, partially exists, or is absent, mapped to mechanisms rather than feature names. This kills the "already shipped under a different name" trap before it wastes anyone's time.
+2. **Whitespace from failure** (`$inventor-whitespace`) — challenge the guarantees the surviving area makes with the failure lenses below, and turn what breaks into concrete candidate mechanisms.
+3. **Patent-informed novelty search** — for every promising candidate, search patents and technical literature around the underlying problem and mechanism, not just the feature name. This does two jobs:
+   - **Inspiration.** Patents are full of specific, well-worked mechanisms for adjacent problems. Borrow and recombine — a technique from an unrelated domain applied here is often exactly what "hasn't existed before" looks like in practice.
+   - **A real novelty test.** Search element-by-element, not the whole idea as one phrase — most matches hide in a specific mechanism (a data structure, a verification step, a retry strategy), not the headline. If nothing close turns up, that's a strong candidate. If something close exists, either push the idea further until it's a real departure, or note plainly what it resembles and build it anyway because it's good — just don't call it new.
+4. **Push past incremental.** The first version of an idea is usually a small, safe tweak. Before finalizing a candidate, ask what it would look like if you combined it with another candidate, generalized it beyond the one case that inspired it, or took the mechanism to its logical extreme. An "invention" that only clears the bar of "mildly useful and nobody happened to build it" is a weak one — keep pushing until it would surprise someone who knows this space well.
+5. **Sanity-check**: every finalist must name a technical state machine, data representation, or algorithm — not just a desirable outcome. "Use AI to," "apply policy," "generate a score," "use a blockchain," "sign a receipt," and "store evidence" name outcomes, not mechanisms; push past the phrase or drop the idea.
 
-The deliverable for a default request is a short list — name, the mechanism, and why the codebase doesn't already cover it. No search, no claim charts, no legal gates, and no card file are required to answer "what should we build next."
+The deliverable: a short list of genuinely new feature or product ideas, each with its mechanism, why the codebase doesn't already cover it, and a one-line novelty read from step 3 (looks fresh and here's what it's adjacent to / resembles known art and here's what, so build it for the value not the novelty).
 
-## Opt-in: Diligence Safeguard
+## Before You Commit
 
-Reach for this only when a candidate is worth checking before you actually build on it or before anyone considers filing — not on every idea from the list above. It asks a different, heavier question: *is this safe, and is it worth protecting?*
+For the rare candidate that came back looking genuinely novel and worth pursuing seriously: **loop in an actual person**, and counsel if filing a patent is a real possibility. A search pass here is diligence-*flavored* — it sparks and stress-tests ideas — but it is not freedom-to-operate analysis and does not clear anything for filing. **Only a natural person can legally be listed as a patent inventor.** Nothing in this skill is legal advice, and an AI conversation should never be the entire record for something you might actually file on.
 
-1. `$inventor-card` — normalize the candidate into the full invention-card template so the diligence below has something durable to attach to.
-2. `$inventor-search` — search patent and non-patent prior art in widening rings.
-3. `$inventor-gate` — build patentability and FTO claim charts; run §101 eligibility, §102 novelty, §103 nonobviousness, §112 disclosure, FTO, detectability, strategic value, and license strategy.
-4. `$inventor-disposition` — assign an explicit disposition (prototype-then-provisional, incubate, trade secret, defensive publication, implement without filing, or reject), run the human-inventorship safeguard, and set filing/refresh timing.
-
-Read `.inventor.json` before starting this track: target jurisdictions, search cutoff date, ownership/employment/assignment obligations, repository and dependency licenses, disclosure history, and the goal (offensive protection, defensive leverage, fundraising, licensing, or publication) all shape the outcome. Keep three questions separate throughout:
-
-| Question | Asks |
-| --- | --- |
-| Patentability | Could useful claims be obtained over all applicable prior art? |
-| Validity | Would those claims likely survive later attack? |
-| FTO (freedom-to-operate) | Would the planned implementation infringe an active claim in a relevant jurisdiction? |
-
-A patent is a right to exclude, not an affirmative right to practice the invention — do not conflate "we could patent this" with "we are clear to build this."
-
-## Failure Lenses (for step 2 of Invent)
+## Failure Lenses (for step 2)
 
 For each product guarantee, ask what happens under:
 
@@ -51,39 +40,22 @@ For each product guarantee, ask what happens under:
 | Inability to compensate | If you can't undo the effect, what's the compensating mechanism? |
 | Hidden or undeclared proof inputs | What is the system trusting that it never asked to verify? |
 
-## Capability Classification (for step 1 of Invent)
+## Capability Classification (for step 1)
 
 | State | Meaning |
 | --- | --- |
 | Exists | Shipped and observable in the current codebase. |
 | Partially exists | A related mechanism exists but doesn't cover the candidate's full scope. |
 | Absent | Nothing in the codebase does this today. |
-| Publicly disclosed | Described in a commit, issue, demo, doc, or talk — counts as prior art against your own future filing. |
-| Private/confidential | Exists but has never left the org — still eligible for a later filing if disclosure is controlled from here. |
-
-## Safety Boundaries (apply once you're in the Safeguard track)
-
-- **This is not legal advice.** Counsel makes the final patentability, validity, FTO, and inventorship determinations — the safeguard track produces the diligence record counsel reviews, not a substitute for review.
-- **Only natural persons can be inventors.** AI may assist, but conception requires a specific, settled, complete operative solution, not a research goal (USPTO's 2025 AI-assisted inventorship guidance; *Thaler v. Vidal*). Never write a person's name onto an AI-drafted card. Every candidate that reaches a disposition must go through a human invention workshop before anyone is named an inventor.
-- **License strategy is part of FTO, not an afterthought.** A permissive license's built-in patent grant (e.g. Apache-2.0 §3) typically licenses only claims necessarily infringed by *the contributed work itself* — it is a weaker tool for excluding others than for defense, cross-licensing, or embodiments you did not contribute upstream. Check what the repo's own license already grants away before assuming a patent will let you exclude users of your own open-source implementation.
-- **Pre-filing disclosure is often irreversible.** It can destroy foreign filing rights even where a domestic grace period exists (EPC Article 54 treats anything public before filing as prior art). Prototype privately; log every disclosure in `docs/disclosures.md` the moment it happens, not after the fact.
-- **A "clear" search goes stale invisibly.** Most U.S. nonprovisional applications are unpublished for about 18 months (MPEP §1120). Refresh the search on the cadence in `$inventor-disposition`, not just once.
-
-## Output
-
-- **Default (Invent):** a short list of feature candidates — name, mechanism, and why the codebase doesn't already cover it. No files required.
-- **Opt-in (Safeguard):** one invention card per candidate pursued (`docs/cards/NNNN-slug.md`, via `node scripts/record-card.js`), a `docs/rejected-candidates.md` entry if rejected, and a capability-matrix note if archaeology surfaced self-prior-art worth remembering.
+| Publicly disclosed | Described in a commit, issue, demo, doc, or talk. |
+| Private/confidential | Exists but has never left the org. |
 
 ## Common Mistakes
 
 | Mistake | Correction |
 | --- | --- |
-| Running the full diligence safeguard on every casual feature idea | Diligence is opt-in — default to a quick, mechanism-grounded idea list; escalate to search/gates/disposition only when you intend to build seriously or file. |
+| Stopping at the first idea that clears "mildly useful" | Push it further — combine, generalize, or escalate until it would surprise someone who knows the space. |
 | Pitching an outcome ("detect fraud better") as an invention | Push until it names a state machine, data structure, or algorithm; drop it if it can't. |
-| Searching only the whole idea as one phrase | Search element pairs and synonyms too — most collisions hide at the element level, not the headline. |
-| Reading only titles and abstracts | Read independent claims; that's where the actual scope lives. |
-| Treating "we found no patent" as "we're clear to build" | Patentability and FTO are different questions; check both, and check non-patent art too. |
-| Naming an inventor before the human workshop | Conception requires a human's specific, settled, complete solution — do the workshop first. |
-| Filing before checking the repo's own license | A permissive license's patent grant can already give away what you're trying to protect. |
-| Searching once and moving on | Refresh before each filing deadline, before launch, after material implementation changes, and periodically while applications are pending. |
-| Skipping the rejected-candidate log | The same idea gets re-pitched in six months without it. |
+| Searching only the whole idea as one phrase | Search the underlying mechanism and its elements — most real matches hide there, not in the headline concept. |
+| Treating a clean search as legal clearance | A diligence-flavored pass sparks and tests ideas; it isn't freedom-to-operate. Loop in a human before filing or making public claims. |
+| Naming the AI as inventor on anything real | Only a natural person can legally be an inventor — a human has to actually own the conception. |

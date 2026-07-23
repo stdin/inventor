@@ -39,7 +39,7 @@ For each candidate area of functionality, classify it:
 | Publicly disclosed | Described in a commit, issue, demo, doc, or talk — counts as prior art against your own future filing. |
 | Private/confidential | Exists but has never left the org — still eligible for a later filing if disclosure stays controlled. |
 
-Use `docs/capability-matrix-template.md` as the working table. Every row should name a mechanism, not a feature — "optimistic-lock retry with vector-clock conflict detection on the order-state transaction," not "better checkout."
+A simple table works: mechanism | state | where it lives | notes. Every row should name a mechanism, not a feature — "optimistic-lock retry with vector-clock conflict detection on the order-state transaction," not "better checkout." This doesn't need to be a permanent artifact — it just needs to be accurate enough to hand to `$inventor-whitespace`.
 
 ## Why this matters before anything else
 
