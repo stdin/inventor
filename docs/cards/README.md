@@ -10,7 +10,7 @@ This is the durable diligence record for every candidate that comes out of `$inv
 
 ## Pipeline
 
-`$inventor-archaeology` (capability matrix) → `$inventor-whitespace` (candidates) → `$inventor-card` (this template) → `$inventor-search` (prior art) → `$inventor-gate` (claim charts + §101/§102/§103/§112/FTO gates) → `$inventor-disposition` (final call + human inventorship workshop + filing timeline).
+This card is the artifact of the **opt-in diligence safeguard**, not of default ideation. `$inventor`'s default action is just "invent a new feature for this codebase" via `$inventor-archaeology` (capability matrix) → `$inventor-whitespace` (candidates) — no card required. Only when a candidate is worth checking before you build on it or before anyone considers filing does it move into: `$inventor-card` (this template) → `$inventor-search` (prior art) → `$inventor-gate` (claim charts + §101/§102/§103/§112/FTO gates) → `$inventor-disposition` (final call + human inventorship workshop + filing timeline).
 
 ## Project boundary (`.inventor.json`)
 
@@ -18,6 +18,7 @@ Every card is diligenced against the boundary declared in the project's `.invent
 
 | Field | Meaning |
 | --- | --- |
+| `alwaysOn` | Defaults to `false`. When `true`, the SessionStart hook injects the pipeline into every agent session (opt-in); otherwise it's invoked on demand via the `$inventor` skills and the hook produces no output. |
 | `jurisdictions` | Target jurisdictions for patentability/FTO analysis (e.g. `["US", "EP"]`). |
 | `searchCutoffDate` | The date prior-art searches should be treated as current through. |
 | `goal` | `offensive`, `defensive`, `fundraising`, `licensing`, or `publication` — shapes which disposition is correct. |
@@ -26,6 +27,6 @@ Every card is diligenced against the boundary declared in the project's `.invent
 | `repositoryLicense` / `dependencyLicensePolicy` | What the repo already grants away — checked in `$inventor-gate`'s license-strategy gate. |
 | `disclosureLog` | Path to the running public-disclosure log (defaults to `docs/disclosures.md`). |
 | `counsel` | Contact info for the counsel who makes the final call. |
-| `priorities` / `excludedDomains` / `notes` | Project-specific tuning, injected alongside the rule on every session. |
+| `priorities` / `excludedDomains` / `notes` | Project-specific tuning, injected alongside the rule whenever the pipeline runs (every session if `alwaysOn` is set, on demand otherwise). |
 
 See `.inventor.json` at the repo root for this project's own (dogfooded) configuration, and `bin/inventor.js init` for scaffolding one into a new repo.

@@ -8,10 +8,14 @@ const root = path.resolve(__dirname, '..');
 const cwd = process.cwd();
 
 const USAGE = `Usage:
-  inventor init [--goal <offensive|defensive|fundraising|licensing|publication>] [--jurisdiction <code>]... [--agents-only] [--force] [--dry-run]
+  inventor init [--goal <offensive|defensive|fundraising|licensing|publication>] [--jurisdiction <code>]... [--always-on] [--agents-only] [--force] [--dry-run]
   inventor --help
 
-Installs the Inventor patent-whitespace playbook into the current repository.`;
+Installs the Inventor patent-whitespace playbook into the current repository.
+The pipeline runs on demand via the $inventor skills by default; pass
+--always-on to have it injected into every agent session instead (opt-in,
+mirrors buy-vs-build's always-on model — off by default because most coding
+sessions have nothing to do with patent diligence).`;
 
 const GOALS = ['offensive', 'defensive', 'fundraising', 'licensing', 'publication'];
 
@@ -61,6 +65,7 @@ function renderConfig() {
   }
   const jurisdictions = flagValues('--jurisdiction');
   return JSON.stringify({
+    alwaysOn: hasFlag('--always-on'),
     jurisdictions: jurisdictions.length ? jurisdictions : ['US'],
     searchCutoffDate: null,
     goal,
@@ -99,6 +104,9 @@ function printResults(results) {
     const suffix = result.reason ? ` (${result.reason}; pass --force to overwrite)` : '';
     console.log(`- ${result.status}: ${result.rel}${suffix}`);
   }
+  console.log(hasFlag('--always-on')
+    ? 'alwaysOn: true — the pipeline will be injected into every agent session.'
+    : 'alwaysOn: false (default) — run the pipeline on demand with $inventor, or set "alwaysOn": true in .inventor.json.');
 }
 
 function main() {

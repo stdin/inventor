@@ -13,6 +13,7 @@ assert.ok(GOALS.includes('defensive'));
 const config = JSON.parse(renderConfig());
 assert.equal(config.goal, 'defensive');
 assert.deepEqual(config.jurisdictions, ['US']);
+assert.equal(config.alwaysOn, false, 'alwaysOn must default to false — Inventor is opt-in, not always-on');
 
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 assert.equal(packageJson.bin.inventor, 'bin/inventor.js');
@@ -31,6 +32,17 @@ assert.ok(fs.existsSync(path.join(dir, 'docs', 'rejected-candidates.md')));
 const installedConfig = JSON.parse(fs.readFileSync(path.join(dir, '.inventor.json'), 'utf8'));
 assert.equal(installedConfig.goal, 'offensive');
 assert.deepEqual(installedConfig.jurisdictions, ['US', 'EP']);
+assert.equal(installedConfig.alwaysOn, false, 'default init must not opt in to always-on');
+
+const alwaysOnDir = fs.mkdtempSync(path.join(os.tmpdir(), 'inventor-init-always-on-'));
+const alwaysOnResult = spawnSync(process.execPath, [cli, 'init', '--always-on'], {
+  cwd: alwaysOnDir,
+  encoding: 'utf8'
+});
+assert.equal(alwaysOnResult.status, 0, alwaysOnResult.stderr);
+assert.match(alwaysOnResult.stdout, /alwaysOn: true/);
+const alwaysOnConfig = JSON.parse(fs.readFileSync(path.join(alwaysOnDir, '.inventor.json'), 'utf8'));
+assert.equal(alwaysOnConfig.alwaysOn, true);
 
 const skipped = spawnSync(process.execPath, [cli, 'init'], {
   cwd: dir,

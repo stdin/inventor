@@ -95,4 +95,11 @@ function getProjectConfigBlock(cwd) {
   return renderProjectConfig(loadProjectConfig(cwd));
 }
 
-module.exports = { CONFIG_FILENAME, loadProjectConfig, renderProjectConfig, getProjectConfigBlock };
+// Default-off: the pipeline runs on demand via the $inventor skills unless a
+// project explicitly opts in to SessionStart injection.
+function isAlwaysOn(cwd) {
+  const config = loadProjectConfig(cwd);
+  return Boolean(config && config.alwaysOn === true);
+}
+
+module.exports = { CONFIG_FILENAME, loadProjectConfig, renderProjectConfig, getProjectConfigBlock, isAlwaysOn };
