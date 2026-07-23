@@ -1,6 +1,6 @@
 {
   "name": "inventor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Invents genuinely new features and products for a codebase, using patent search as a diligence input to spark and test ideas that haven't existed before.",
   "license": "MIT",
   "repository": {
@@ -9,7 +9,10 @@
   },
   "keywords": [
     "ai-agents",
+    "agent-skills",
     "claude-code",
+    "codex",
+    "codex-plugin",
     "feature-ideation",
     "product-ideation",
     "patents",
