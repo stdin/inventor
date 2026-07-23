@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inventor: Whitespace"
+  short_description: "Turn failure modes into technical candidates"
+  default_prompt: "Find invention candidates in this capability matrix."
+
+policy:
+  allow_implicit_invocation: true

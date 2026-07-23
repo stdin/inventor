@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inventor"
+  short_description: "Invent novel, mechanism-shaped product ideas"
+  default_prompt: "Invent a genuinely new feature for this codebase."
+
+policy:
+  allow_implicit_invocation: true

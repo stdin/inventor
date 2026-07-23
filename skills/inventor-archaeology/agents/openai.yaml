@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inventor: Archaeology"
+  short_description: "Map mechanisms the codebase already contains"
+  default_prompt: "Map this codebase's mechanisms before ideating."
+
+policy:
+  allow_implicit_invocation: true
