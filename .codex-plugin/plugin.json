@@ -1,0 +1,36 @@
+{
+  "name": "inventor",
+  "version": "0.3.0",
+  "description": "Invents genuinely new features and products for a codebase using code archaeology, failure analysis, and patent-informed novelty search.",
+  "author": {
+    "name": "Slava Yanson",
+    "url": "https://github.com/stdin"
+  },
+  "homepage": "https://github.com/stdin/inventor",
+  "repository": "https://github.com/stdin/inventor",
+  "license": "MIT",
+  "keywords": [
+    "feature-ideation",
+    "product-ideation",
+    "patents",
+    "prior-art",
+    "software-design"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Inventor",
+    "shortDescription": "Invent surprising, mechanism-shaped product ideas.",
+    "longDescription": "Maps what a codebase already does, finds whitespace by breaking its guarantees, and searches patents and technical literature to inspire and pressure-test genuinely new feature and product ideas.",
+    "developerName": "stdin",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://github.com/stdin/inventor",
+    "defaultPrompt": [
+      "Invent a genuinely new feature for this codebase.",
+      "Find surprising product whitespace in this repository.",
+      "Pressure-test this idea against code and prior art."
+    ]
+  }
+}
