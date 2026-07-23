@@ -1,0 +1,9 @@
+{
+  "name": "inventor",
+  "version": "0.1.0",
+  "description": "Patent-informed feature whitespace and collision-diligence playbook for AI coding agents.",
+  "author": {
+    "name": "Slava Yanson"
+  },
+  "hooks": "./hooks/claude-codex-hooks.json"
+}

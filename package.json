@@ -1,0 +1,52 @@
+{
+  "name": "inventor",
+  "version": "0.1.0",
+  "description": "Patent-informed feature whitespace and collision-diligence playbook for AI coding agents.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stdin/inventor.git"
+  },
+  "keywords": [
+    "ai-agents",
+    "codex",
+    "claude-code",
+    "patents",
+    "prior-art",
+    "ip-diligence",
+    "agents-md"
+  ],
+  "bin": {
+    "inventor": "bin/inventor.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "AGENTS.md",
+    "bin/",
+    "docs/cards/0000-template.md",
+    "docs/cards/README.md",
+    "docs/capability-matrix-template.md",
+    "docs/claim-charts/",
+    "hooks/",
+    "rules/",
+    "scripts/",
+    "skills/"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node scripts/sync.js --check && node scripts/check-rule-copies.js && node --test",
+    "sync": "node scripts/sync.js",
+    "sync:check": "node scripts/sync.js --check",
+    "record-card": "node scripts/record-card.js",
+    "refresh": "node scripts/refresh-check.js"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}

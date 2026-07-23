@@ -1,0 +1,17 @@
+{
+  "jurisdictions": ["US"],
+  "searchCutoffDate": null,
+  "goal": "defensive",
+  "owners": [],
+  "assignmentObligations": "",
+  "repositoryLicense": "MIT",
+  "dependencyLicensePolicy": "inherit",
+  "disclosureLog": "docs/disclosures.md",
+  "counsel": {
+    "name": "",
+    "contact": ""
+  },
+  "priorities": [],
+  "excludedDomains": [],
+  "notes": "Inventor is installed to make coding agents run product archaeology and prior-art diligence before pitching a feature as a new invention. Not legal advice; counsel makes the final call."
+}

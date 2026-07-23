@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inventor: Claim Charts and Hard Gates"
+  short_description: "Run §101/102/103/112, FTO, and strategic gates"
+  default_prompt: "Use $inventor-gate to build patentability and FTO claim charts for this invention card and run it through the §101/§102/§103/§112 and FTO gates."
+
+policy:
+  allow_implicit_invocation: true

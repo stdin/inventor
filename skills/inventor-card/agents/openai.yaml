@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inventor: Invention Cards"
+  short_description: "Normalize a raw idea into a rigorous invention card"
+  default_prompt: "Use $inventor-card to normalize this idea into a full invention card, or reject it if it's only a buzzword outcome."
+
+policy:
+  allow_implicit_invocation: true

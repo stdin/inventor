@@ -1,0 +1,33 @@
+{
+  "name": "inventor",
+  "version": "0.1.0",
+  "description": "Runs a patent-informed feature whitespace and collision-diligence playbook before coding agents pitch or build a 'new' feature.",
+  "author": {
+    "name": "stdin"
+  },
+  "license": "MIT",
+  "keywords": [
+    "inventor",
+    "patents",
+    "prior-art",
+    "ip-diligence",
+    "feature-ideation",
+    "software-design"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Inventor",
+    "shortDescription": "Patent-informed feature whitespace and diligence.",
+    "longDescription": "Adds an always-on invention pipeline: product archaeology, failure-driven whitespace, invention cards, widening-ring prior-art search, patentability/FTO claim charts, and the §101/§102/§103/§112/FTO/detectability/strategic-value/license-strategy gates, ending in an explicit disposition and human-inventorship safeguard.",
+    "developerName": "stdin",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "defaultPrompt": [
+      "Use inventor to find patent-informed feature whitespace in this codebase.",
+      "Run collision diligence on this feature idea before we build it.",
+      "Is this actually new, or does it already exist somewhere in here?"
+    ]
+  }
+}

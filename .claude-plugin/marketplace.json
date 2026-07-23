@@ -1,0 +1,20 @@
+{
+  "name": "inventor",
+  "description": "Patent whitespace and collision-diligence ruleset for AI coding agents",
+  "owner": {
+    "name": "stdin"
+  },
+  "plugins": [
+    {
+      "name": "inventor",
+      "description": "Run product archaeology, failure-driven whitespace generation, invention-card normalization, widening-ring prior-art search, and §101/§102/§103/§112/FTO gating before pitching or filing on a feature.",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "stdin"
+      },
+      "category": "development",
+      "homepage": "https://github.com/stdin/inventor"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Inventor: Whitespace From Failure"
+  short_description: "Generate claim-shaped candidates from failure modes"
+  default_prompt: "Use $inventor-whitespace to generate claim-shaped feature candidates by challenging this codebase's guarantees with failure-mode lenses."
+
+policy:
+  allow_implicit_invocation: true
